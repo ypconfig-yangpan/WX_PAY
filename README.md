@@ -10,13 +10,9 @@ Payment paymen;
 @Data
 @ConfigurationProperties(prefix="wx.pay.applet")
 public class WxPayAppletConfig  
-
-创建订单
- PayRequest payRequest = new PayRequest();
- 然后选择支付渠道
- payRequest.setPayChannel(PayChannel.WXPAY_APPLET);
- PayResponse 里面会得到相应的预支付定单信息
-    /**
+   
+   
+   /**
      * 创建订单
      *
      * @param request
@@ -26,18 +22,21 @@ public class WxPayAppletConfig
     @ResponseBody
     public PayResponse createOrder(HttpServletRequest request) {
         String openId = request.getParameter("openId");
+        // 创建请求
         PayRequest payRequest = new PayRequest();
         payRequest.setOrderId(OrderIdUtil.createOrderId());
         payRequest.setOpenid(openId);
         payRequest.setOrderAmount(1);
         payRequest.setOrderName("test");
+        // 然后选择支付渠道
         payRequest.setPayChannel(PayChannel.WXPAY_APPLET);
         log.info("支付請求={}", request);
+         PayResponse 里面会得到相应的预支付定单信息
         PayResponse payment = paymen.payment(payRequest);
         log.info("支付返回={}", payment);
         return payment;
     }
-    
+    // 下面的接口也如此
     //查询
         @RequestMapping("/order/queryOrder")
     @ResponseBody
