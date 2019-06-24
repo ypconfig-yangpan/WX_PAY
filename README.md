@@ -6,18 +6,9 @@ wx_pay 是一个未发布的sdkwx小程序,H5 支付包,
 配置好配置文件
 @Autowired
 Payment paymen;
-配置类
-@Data
-@ConfigurationProperties(prefix="wx.pay.applet")
-public class WxPayAppletConfig  
+配置类 WxPayAppletConfig  
    
-   
-   /**
-     * 创建订单
-     *
-     * @param request
-     * @return
-     */
+```Java
     @RequestMapping("/order/create")
     @ResponseBody
     public PayResponse createOrder(HttpServletRequest request) {
@@ -107,5 +98,5 @@ public class WxPayAppletConfig
         ServletOutputStream outputStream = response.getOutputStream();
         outputStream.write("<xml> <return_code><![CDATA[SUCCESS]]></return_code> <return_msg><![CDATA[OK]]></return_msg></xml>".getBytes());
     }
-
+```
 很简单的使用方式  欢迎大家一起code
