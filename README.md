@@ -28,8 +28,9 @@ Payment paymen;
         return payment;
     }
     // 下面的接口也如此
+    
     //查询
-        @RequestMapping("/order/queryOrder")
+    @RequestMapping("/order/queryOrder")
     @ResponseBody
     public PayResponse queryOrder(HttpServletRequest request) {
         OrderQueryRequest orderQueryRequest = new OrderQueryRequest();
@@ -40,7 +41,7 @@ Payment paymen;
         return query;
     }
     // 通知
-        @RequestMapping("/order/notify")
+    @RequestMapping("/order/notify")
     public void notify(HttpServletRequest request, HttpServletResponse response) throws IOException {
         log.info("进入通知  : 微信支付回调");
         InputStream inStream = request.getInputStream();
@@ -62,7 +63,7 @@ Payment paymen;
     
     // 退款
     
-     @RequestMapping("/order/refund")
+    @RequestMapping("/order/refund")
     public void refund(HttpServletRequest request,String orderId) throws IOException {
         log.info("进入退款流程 ");
         RefundRequest refundRequest = new RefundRequest();
